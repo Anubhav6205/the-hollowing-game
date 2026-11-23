@@ -8,7 +8,10 @@
 !Assets/
 !Assets/Main/
 !Assets/Main/Scripts/
-!Readme.pdf
+!README.md
+!LICENSE
+!docs/
+!docs/*.pdf
 !AIUsageReport.pdf
 
 # Allow only C# script files inside Scripts folder

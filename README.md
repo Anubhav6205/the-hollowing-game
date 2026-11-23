@@ -37,7 +37,7 @@ About 50 scripts in total.
 
 ## Tools and credits
 
-The game was built with AI assistance, as the game guide discloses: ChatGPT for scripting help and story brainstorming, Sora, ElevenLabs and Hailuo AI for visuals, voice and cutscene material, and Filmora for editing. Game design, integration and testing were done by the team.
+The game was built with AI assistance, as the game guide discloses: ChatGPT for scripting help and story brainstorming, Sora, ElevenLabs and Hailuo AI for visuals, voice and cutscene material, and Filmora for editing. Game design, integration and testing were done by the author.
 
 The environment used in the game comes from a third-party Unity asset pack, which is not included here and is not covered by this repository's license.
 
