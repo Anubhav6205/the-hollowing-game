@@ -2,6 +2,8 @@
 
 A first-person horror game built in Unity (C#) that won first place at a game development hackathon. The twist: your own microphone is the main threat. If you make too much noise, the game ends.
 
+**Live demo:** [the-hollowing-game.vercel.app](https://the-hollowing-game.vercel.app) (a project page, not a playable build: the game is a Unity desktop project)
+
 This repository contains the game's C# scripts only. Scenes, models, audio and third-party asset packs are not included.
 
 ## Story
@@ -51,4 +53,4 @@ MIT for the scripts, see [LICENSE](LICENSE).
 
 ## Contact
 
-Anubhav Gupta, [LinkedIn](https://www.linkedin.com/in/anubhav-gupta-92410a244/)
+Anubhav Gupta, [LinkedIn](https://www.linkedin.com/in/anubhavgupta8)

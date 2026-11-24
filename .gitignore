@@ -19,3 +19,10 @@
 
 # Exclude meta files, unless you want to keep them
 *.meta
+
+# Static project page for Vercel
+!index.html
+!vercel.json
+!.vercelignore
+
+.vercel

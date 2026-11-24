@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Hollowing | Unity horror game where your microphone is the threat</title>
+<meta name="description" content="Project page for The Hollowing, a first-person horror game built in Unity (C#). Your microphone is the main threat. Hackathon winner. Source scripts on GitHub.">
+<style>
+  :root{--bg:#0b0b0d;--panel:#141418;--line:#26262d;--text:#d9d9de;--dim:#8d8d98;--red:#c0392b;--redhi:#e5493a}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  a{color:var(--redhi)}
+  .wrap{max-width:860px;margin:0 auto;padding:0 20px}
+  header.hero{padding:72px 0 40px;border-bottom:1px solid var(--line);background:radial-gradient(ellipse at 50% 0,#2a0f0f 0,transparent 65%)}
+  h1{font-size:clamp(2.4rem,8vw,4.2rem);letter-spacing:.12em;text-transform:uppercase;margin:0 0 8px;font-weight:700}
+  .tag{color:var(--dim);font-size:1.1rem;margin:0 0 24px}
+  .notice{border:1px solid #5a2a25;background:#1a0f0e;padding:14px 16px;border-radius:6px;font-size:.95rem;margin:0 0 24px}
+  .notice strong{color:var(--redhi)}
+  .btns{display:flex;flex-wrap:wrap;gap:10px}
+  .btn{display:inline-block;padding:10px 18px;border:1px solid var(--red);border-radius:6px;color:var(--text);text-decoration:none;font-weight:600}
+  .btn.primary{background:var(--red)}
+  .btn:hover{border-color:var(--redhi)}
+  section{padding:40px 0;border-bottom:1px solid var(--line)}
+  h2{font-size:1.4rem;margin:0 0 16px;letter-spacing:.04em}
+  h3{font-size:1.05rem;margin:24px 0 8px;color:#fff}
+  p{margin:0 0 14px}
+  ul{padding-left:20px;margin:0 0 14px}
+  li{margin-bottom:8px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:16px}
+  .card h3{margin-top:0}
+  table{width:100%;border-collapse:collapse;font-size:.95rem}
+  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--dim);font-weight:600;font-size:.85rem;text-transform:uppercase;letter-spacing:.06em}
+  kbd{background:#1f1f26;border:1px solid #33333d;border-bottom-width:2px;border-radius:4px;padding:1px 7px;margin-right:3px;font:600 .9em ui-monospace,Consolas,monospace}
+  code{font-family:ui-monospace,Consolas,monospace;font-size:.9em;color:#e8c9c5}
+  .meter{display:flex;gap:4px;margin:8px 0 4px}
+  .meter span{flex:1;height:14px;background:#e8e8ee;border-radius:2px}
+  .meter.safe span:nth-child(n+5){background:#2a2a31}
+  .meter.danger span:nth-child(n+7){background:var(--red)}
+  .meter.over span{background:var(--red)}
+  .meter-label{font-size:.85rem;color:var(--dim);margin:0}
+  footer{padding:32px 0 56px;color:var(--dim);font-size:.9rem}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <h1>The Hollowing</h1>
+    <p class="tag">A first-person horror game in Unity where your microphone is the threat. First place at a game development hackathon.</p>
+    <div class="notice">
+      <strong>This is a project page, not a playable demo.</strong>
+      The game is a Unity desktop project and needs a microphone, so it is not hosted in the browser. The public repository contains the C# scripts only. Scenes, models, audio and the third-party environment pack are not included.
+    </div>
+    <div class="btns">
+      <a class="btn primary" href="https://github.com/Anubhav6205/the-hollowing-game">Source on GitHub</a>
+      <a class="btn" href="docs/the-hollowing-game-guide.pdf">Game guide (PDF)</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+<section id="story">
+  <h2>Story</h2>
+  <p>Five years after his sister Lilly was taken by a dark entity, Jonathan gets a voice message from her telling him to stay away. He ignores it, crashes his car near a forest town at dusk and has to continue on foot.</p>
+  <p>Lilly's soul has been split into five artifacts, and she can hold the demons back for only six minutes. The player has to find all five artifacts in that time without making a sound.</p>
+</section>
+
+<section id="mechanic">
+  <h2>The core idea: your mic is the enemy</h2>
+  <p>The game reads your microphone continuously. A loud sound, such as a shout, a cough or a loud whisper, ends the run. Sensitivity is calibrated on the instructions screen after the main menu, and a mic meter on screen shows loudness in real time.</p>
+  <div class="grid">
+    <div class="card"><h3>White bars</h3><div class="meter safe" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div><p class="meter-label">Safe</p></div>
+    <div class="card"><h3>Red flash</h3><div class="meter danger" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div><p class="meter-label">Danger threshold reached</p></div>
+    <div class="card"><h3>Full red</h3><div class="meter over" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div><p class="meter-label">Game over, instant fail</p></div>
+  </div>
+  <p style="margin-top:14px;color:var(--dim);font-size:.9rem">Simple illustration of the three meter states described in the game guide. It is not a screenshot.</p>
+</section>
+
+<section id="gameplay">
+  <h2>Gameplay</h2>
+  <ul>
+    <li><b>Stealth and chases.</b> Demons hunt the player, with scripted jump scares and chase cutscenes built with Cinemachine. Sprint, a lean-back camera and a flashlight with a draining battery are the player's tools.</li>
+    <li><b>Objective system.</b> A ringing phone unlocks the six-minute timer and the full mic meter. A direction arrow, which shifts from red to white as you get closer, guides the player to the next artifact.</li>
+    <li><b>Win and lose.</b> Collect all five artifacts before the timer ends, or lose to a demon or to noise. Winning moves the scene from night to sunrise.</li>
+    <li><b>3D positional audio</b> for footsteps, whispers and growls. Headphones are recommended.</li>
+  </ul>
+
+  <h3>Controls</h3>
+  <table>
+    <tr><th>Key</th><th>Action</th></tr>
+    <tr><td><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> + mouse</td><td>Move and look</td></tr>
+    <tr><td><kbd>Shift</kbd></td><td>Sprint (too long and you slow down)</td></tr>
+    <tr><td><kbd>C</kbd></td><td>Lean the camera behind you while moving forward</td></tr>
+    <tr><td><kbd>Space</kbd></td><td>Jump, or skip a cutscene camera</td></tr>
+    <tr><td><kbd>F</kbd></td><td>Toggle flashlight (drains battery)</td></tr>
+    <tr><td><kbd>G</kbd></td><td>Pick up batteries and artifacts</td></tr>
+    <tr><td><kbd>Esc</kbd></td><td>Pause</td></tr>
+  </table>
+</section>
+
+<section id="code">
+  <h2>Code overview</h2>
+  <p>About 50 C# scripts, organised by responsibility.</p>
+  <table>
+    <tr><th>Folder</th><th>What it holds</th></tr>
+    <tr><td><code>Audio/</code></td><td>Microphone input, calibration, loudness meter, death handling</td></tr>
+    <tr><td><code>Core/</code></td><td>Event manager and shared helpers</td></tr>
+    <tr><td><code>FPSController/</code></td><td>Character controller</td></tr>
+    <tr><td><code>Gameplay/</code></td><td>Story flow, timer, quake and jump-scare triggers, end sequence</td></tr>
+    <tr><td><code>Ghost/</code></td><td>Demon chase AI and cutscene triggers</td></tr>
+    <tr><td><code>Interactables/</code></td><td>Artifacts, batteries, flashlight and phone pickups</td></tr>
+    <tr><td><code>Navigation/</code></td><td>Waypoint arrow guiding the player</td></tr>
+    <tr><td><code>Player/</code></td><td>Movement, flashlight, battery HUD</td></tr>
+    <tr><td><code>UI/</code></td><td>Menus, intro and outro, pause, pickup messages</td></tr>
+  </table>
+  <p style="margin-top:14px"><a href="https://github.com/Anubhav6205/the-hollowing-game/tree/main/Assets/Main/Scripts">Browse the scripts on GitHub</a></p>
+</section>
+
+<section id="credits">
+  <h2>Tools and credits</h2>
+  <p>Built in Unity 2020.3 LTS with the Cinemachine package. The game was built with AI assistance, as the game guide discloses: ChatGPT for scripting help and story brainstorming, Sora, ElevenLabs and Hailuo AI for visuals, voice and cutscene material, and Filmora for editing. Game design, integration and testing were done by the author.</p>
+  <p>The environment comes from a third-party Unity asset pack that is not included in the repository and is not covered by its license. The scripts are MIT licensed.</p>
+  <h3>Known issues</h3>
+  <ul>
+    <li>Microphone sensitivity varies a lot between devices and can cause false positives. Use a headset and the calibration slider.</li>
+    <li>After dying once and restarting, the navigation arrow may not advance to the second destination until the game is restarted.</li>
+    <li>A few AMD-based systems have reported occasional movement freezes.</li>
+  </ul>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    Anubhav Gupta &middot; <a href="https://www.linkedin.com/in/anubhavgupta8">LinkedIn</a> &middot; <a href="https://github.com/Anubhav6205/the-hollowing-game">GitHub</a>
+  </div>
+</footer>
+</body>
+</html>
